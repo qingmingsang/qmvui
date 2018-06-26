@@ -1,0 +1,15 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "useBuiltIns": true
+      }
+    ]
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-class-properties",
+    "transform-vue-jsx"
+  ]
+}
