@@ -2,14 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const paths = require('./paths.js');
 
 module.exports = {
   entry: {
-    example: './example/index.js'
+    app: './src/index.js'
   },
   output: {
-    path: paths.dist,
+    path: path.resolve(__dirname, 'dist'),
     filename: '[name].js'
   },
   mode: 'development',
@@ -76,17 +75,16 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'test',
-      favicon: path.resolve(__dirname, 'favicon.ico'),
-      inject: true,
-      template: path.resolve(__dirname, 'template.html')
+      favicon: './favicon.ico',
+      template: 'template.html'
     }),
   ],
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': paths.example,
-      '~': paths.src,
+      // '@': path.resolve(parentDir, 'example'),
+      // '~': path.resolve(parentDir, 'src'),
       // '$thor': process.env.NODE_ENV == 'lib' ? path.resolve(parentDir, 'dist/index.js') : path.resolve(parentDir, 'src/index.js'),
       // '$css': process.env.NODE_ENV == 'lib' ? path.resolve(parentDir, 'dist/index.css') : path.resolve(parentDir, 'example/styles/empty.css'),
     }
